@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\meal_controller;
+use App\Models\Tag;
+use App\Models\Meal;
 use Illuminate\Support\Facades\Route;
+use Astrotomic\Translatable\Translatable;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+//Route::get('/', 'App\Http\Controllers\MealController@homePage');
+       
+
+
+ Route::get('/{locale}', 'App\Http\Controllers\MealController@index');
+
