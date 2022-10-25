@@ -19,7 +19,7 @@ use Astrotomic\Translatable\Translatable;
 
 
 
-//Route::get('/', 'App\Http\Controllers\MealController@homePage');
+Route::get('/', 'App\Http\Controllers\MealController@homePage');
        
 
 

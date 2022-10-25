@@ -28,6 +28,8 @@ class MealController extends Controller
                 'tag'=>'integer',
                 'category'=>'nullable|integer',
                 'lang'=>'required',
+                'per_page'=>'integer|min:1',
+                'page'=>'integer|min:1',
                 'diff_time'=>'date'
 
                
@@ -42,6 +44,7 @@ class MealController extends Controller
 
        $meal_query=Meal::with(['tag','ingredients','category']);
 
+       $per_page=(int)$request->get('per_page');
        $lang=$request->get('lang');
        $with = $request->get('with');
        $categoryId=$request->get('categories');
@@ -83,6 +86,14 @@ class MealController extends Controller
         $meal_query->withTrashed();
 
     } 
+
+    
+        if ($per_page) {
+        return new MealsCollection($meal_query->paginate($per_page));
+        } else {
+
+        return new MealsCollection(($meal_query));
+        } 
         
     }
 
@@ -96,6 +107,16 @@ class MealController extends Controller
     public function getMeals($tag_id)
     {
         return Tag::find($tag_id)->tags;
+    }
+
+    public function homePage()
+    {
+        
+    
+    
+        return view('meals',[
+           'meals' => Meal::latest()->filter(request(['search']))->paginate(10)
+       ]); 
     }
 
     
