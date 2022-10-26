@@ -20,7 +20,7 @@
                 </h1>
                 <div>   
                 <li>  <a href="/en">{{'EN'}} </a> </li>
-                <li>  <a href="/jp">{{'FR'}} </a> </li>
+                <li>  <a href="/fr">{{'FR'}} </a> </li>
                 </div>
             </div>
         </section>
